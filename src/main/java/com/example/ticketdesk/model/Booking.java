@@ -1,26 +1,36 @@
 package com.example.ticketdesk.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "bookings")
 public class Booking {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long studentId;
-    private Long showId;
-    private int numberOfTickets;
+    private String customerName;
+    private String movieName;
+    private String theatre;
+    private String showTime;
+    private int numberOfSeats;
 
     public Booking() {
     }
 
-    public Booking(Long id, Long studentId, Long showId, int numberOfTickets) {
+    public Booking(Long id, String customerName, String movieName,
+                   String theatre, String showTime, int numberOfSeats) {
         this.id = id;
-        this.studentId = studentId;
-        this.showId = showId;
-        this.numberOfTickets = numberOfTickets;
+        this.customerName = customerName;
+        this.movieName = movieName;
+        this.theatre = theatre;
+        this.showTime = showTime;
+        this.numberOfSeats = numberOfSeats;
     }
 
     public Long getId() {
@@ -31,27 +41,43 @@ public class Booking {
         this.id = id;
     }
 
-    public Long getStudentId() {
-        return studentId;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public Long getShowId() {
-        return showId;
+    public String getMovieName() {
+        return movieName;
     }
 
-    public void setShowId(Long showId) {
-        this.showId = showId;
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
     }
 
-    public int getNumberOfTickets() {
-        return numberOfTickets;
+    public String getTheatre() {
+        return theatre;
     }
 
-    public void setNumberOfTickets(int numberOfTickets) {
-        this.numberOfTickets = numberOfTickets;
+    public void setTheatre(String theatre) {
+        this.theatre = theatre;
+    }
+
+    public String getShowTime() {
+        return showTime;
+    }
+
+    public void setShowTime(String showTime) {
+        this.showTime = showTime;
+    }
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
     }
 }

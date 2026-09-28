@@ -1,26 +1,31 @@
 package com.example.ticketdesk.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "movie_shows")
+@Table(name = "shows")
 public class Show {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String movieName;
+    private String theatre;
     private String showTime;
-    private int availableSeats;
+    private Integer availableSeats;
 
     public Show() {
     }
 
-    public Show(Long id, String movieName, String showTime, int availableSeats) {
+    public Show(Long id, String movieName, String theatre, String showTime, Integer availableSeats) {
         this.id = id;
         this.movieName = movieName;
+        this.theatre = theatre;
         this.showTime = showTime;
         this.availableSeats = availableSeats;
     }
@@ -41,6 +46,14 @@ public class Show {
         this.movieName = movieName;
     }
 
+    public String getTheatre() {
+        return theatre;
+    }
+
+    public void setTheatre(String theatre) {
+        this.theatre = theatre;
+    }
+
     public String getShowTime() {
         return showTime;
     }
@@ -49,11 +62,11 @@ public class Show {
         this.showTime = showTime;
     }
 
-    public int getAvailableSeats() {
+    public Integer getAvailableSeats() {
         return availableSeats;
     }
 
-    public void setAvailableSeats(int availableSeats) {
+    public void setAvailableSeats(Integer availableSeats) {
         this.availableSeats = availableSeats;
     }
 }
